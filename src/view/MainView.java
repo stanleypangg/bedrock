@@ -19,6 +19,8 @@ public class MainView extends JPanel {
     final JButton start;
     final ImageIcon backgroundIcon;
     final JLabel backgroundLabel;
+    final Dimension BUTTON_SIZE = new Dimension(150, 50);
+    final Font BUTTON_FONT = new Font("Roboto", Font.BOLD, 16);
 
     public MainView(MainViewModel mainViewModel, ViewManagerModel viewManagerModel) {
         this.mainViewModel = mainViewModel;
@@ -26,8 +28,8 @@ public class MainView extends JPanel {
 
         // Start Button
         start = new JButton(mainViewModel.START_BUTTON_LABEL);
-        start.setPreferredSize(new Dimension(150, 50));
-        start.setFont(new Font("Roboto", Font.BOLD, 16));
+        start.setPreferredSize(BUTTON_SIZE);
+        start.setFont(BUTTON_FONT);
 
         // Loading images
         try {

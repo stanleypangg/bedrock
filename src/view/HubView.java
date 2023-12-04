@@ -15,25 +15,39 @@ public class HubView extends JPanel {
     final JButton play;
     final JButton collection;
     final JButton decks;
-    final Dimension buttonSize;
+    final Dimension BUTTON_SIZE = new Dimension(300, 200);
+    final Font BUTTON_FONT = new Font("Roboto", Font.BOLD, 16);
 
     public HubView(HubViewModel hubViewModel, ViewManagerModel viewManagerModel) {
         this.hubViewModel = hubViewModel;
         this.viewManagerModel = viewManagerModel;
 
-        buttonSize = new Dimension(200, 100);
-        JPanel buttons = new JPanel();
+        JPanel buttons = new JPanel(new FlowLayout()); // Use FlowLayout for buttons
+
         play = new JButton(hubViewModel.PLAY_BUTTON_LABEL);
-        play.setPreferredSize(buttonSize);
+        play.setPreferredSize(BUTTON_SIZE);
+        play.setFont(BUTTON_FONT);
         buttons.add(play);
+
         collection = new JButton(hubViewModel.COLLECTION_BUTTON_LABEL);
-        collection.setPreferredSize(buttonSize);
+        collection.setPreferredSize(BUTTON_SIZE);
+        collection.setFont(BUTTON_FONT);
         buttons.add(collection);
+
         decks = new JButton(hubViewModel.DECKS_BUTTON_LABEL);
-        decks.setPreferredSize(buttonSize);
+        decks.setPreferredSize(BUTTON_SIZE);
+        decks.setFont(BUTTON_FONT);
         buttons.add(decks);
 
-        this.add(buttons);
+        // Set layout for the HubView to center the buttons vertically and horizontally
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.weightx = 1;
+        gbc.weighty = 1;
+        gbc.anchor = GridBagConstraints.CENTER;
+        this.add(buttons, gbc);
 
         play.addActionListener(
                 new ActionListener() {
